@@ -79,9 +79,18 @@ const FormularioCadastroCliente: React.FC<Props> = ({ tema, onAdicionarCliente, 
             </div>
 
             <div className="input-field col s12 m6">
-              <input type="text" value={genero} onChange={(e) => setGenero(e.target.value)} required />
-              <label className={genero ? "active" : undefined}>Gênero (F/M)</label>
+              <select
+                value={genero}
+                onChange={e => setGenero(e.target.value)}
+                required
+                className="browser-default"
+              >
+                <option value="" disabled>Selecione o gênero</option>
+                <option value="F">F</option>
+                <option value="M">M</option>
+              </select>
             </div>
+
             <div className="input-field col s12 m6">
               <input type="text" value={cpf} onChange={(e) => setCpf(e.target.value)} required maxLength={11}
                 pattern="\d{11}" />
@@ -102,7 +111,6 @@ const FormularioCadastroCliente: React.FC<Props> = ({ tema, onAdicionarCliente, 
 
             <div className="col s12" style={{ marginTop: 30 }}>
               <button className={estiloBotao} type="submit">Cadastrar</button>
-              <button className="btn red lighten-1" type="button" onClick={onCancelar} style={{ marginLeft: '10px' }}>Cancelar</button>
             </div>
 
             {mensagem && (
